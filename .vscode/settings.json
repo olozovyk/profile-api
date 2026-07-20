@@ -11,12 +11,19 @@
     "statusBar.background": "#2fb9a9",
     "statusBar.foreground": "#15202b",
     "statusBarItem.hoverBackground": "#259084",
-    "statusBarItem.remoteBackground": "#2fb9a9",
+    "statusBarItem.remoteBackground": "#f6e6f9",
     "statusBarItem.remoteForeground": "#15202b",
     "titleBar.activeBackground": "#2fb9a9",
     "titleBar.activeForeground": "#15202b",
     "titleBar.inactiveBackground": "#2fb9a999",
-    "titleBar.inactiveForeground": "#15202b99"
+    "titleBar.inactiveForeground": "#15202b99",
+    "activityBarTop.activeBackground": "#4ad1c1",
+    "activityBarTop.background": "#4ad1c1",
+    "activityBarTop.foreground": "#15202b",
+    "activityBarTop.inactiveForeground": "#15202b99",
+    "commandCenter.foreground": "#15202b",
+    "statusBar.debuggingBackground": "#2fb9a9",
+    "statusBar.debuggingForeground": "#15202b"
   },
   "peacock.color": "#2fb9a9",
   "js/ts.tsdk.path": "node_modules/typescript/lib"
