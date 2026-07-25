@@ -15,6 +15,8 @@ export class AppConfigService {
 
   get db() {
     return {
+      host: this.configService.get('DB_HOST', { infer: true }),
+      port: this.configService.get('DB_PORT', { infer: true }),
       user: this.configService.get('DB_USER', { infer: true }),
       password: this.configService.get('DB_PASSWORD', { infer: true }),
       name: this.configService.get('DB_NAME', { infer: true }),
