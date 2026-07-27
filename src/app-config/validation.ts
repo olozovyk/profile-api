@@ -2,6 +2,7 @@ import * as z from 'zod';
 
 const envVars = z.object({
   PORT: z.coerce.number().default(8080),
+  TZ: z.string().default('UTC'),
   DB_HOST: z.string().default('localhost'),
   DB_PORT: z.coerce.number().default(5432),
   DB_USER: z.string(),
