@@ -6,6 +6,7 @@ import { AppConfigService } from './app-config/app-config.service';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { entities } from './database/data-source';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { entities } from './database/data-source';
       }),
       inject: [AppConfigService],
     }),
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
