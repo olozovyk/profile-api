@@ -10,6 +10,7 @@ export class AppConfigService {
   get app() {
     return {
       port: this.configService.get('PORT', { infer: true }),
+      tz: this.configService.get('TZ', { infer: true }),
     };
   }
 

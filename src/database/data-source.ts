@@ -20,6 +20,7 @@ export const dataSource = new DataSource({
   username: DB_USER,
   password: DB_PASSWORD,
   database: DB_NAME,
-  migrations: [__dirname + '/migrations/*{.ts,.js}'],
+  synchronize: false,
+  migrations: [__dirname + '/migrations/**/*{.js,.ts}'],
   ...entities,
 });
