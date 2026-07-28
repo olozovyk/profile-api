@@ -10,7 +10,7 @@ import {
 export const USER_ROLES = ['user', 'moderator', 'admin'] as const;
 export type UserRole = (typeof USER_ROLES)[number];
 
-@Entity()
+@Entity('users')
 export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -21,10 +21,10 @@ export class User {
   @Column()
   password: string;
 
-  @Column({ nullable: true, length: 100, name: 'first_name' })
+  @Column({ nullable: true, type: 'varchar', length: 100, name: 'first_name' })
   firstName: string | null;
 
-  @Column({ nullable: true, length: 100, name: 'last_name' })
+  @Column({ nullable: true, type: 'varchar', length: 100, name: 'last_name' })
   lastName: string | null;
 
   @Column({
@@ -38,21 +38,25 @@ export class User {
   @Column({ default: false, name: 'email_verified' })
   emailVerified: boolean;
 
-  @Column({ nullable: true, name: 'email_verification_token' })
+  @Column({ nullable: true, type: 'varchar', name: 'email_verification_token' })
   emailVerificationToken: string | null;
 
-  @Column({ nullable: true, name: 'email_verification_expires' })
+  @Column({
+    nullable: true,
+    type: 'timestamptz',
+    name: 'email_verification_expires',
+  })
   emailVerificationExpires: Date | null;
 
-  @Column({ nullable: true, name: 'avatar_url' })
+  @Column({ nullable: true, type: 'varchar', name: 'avatar_url' })
   avatarUrl: string | null;
 
-  @CreateDateColumn({ name: 'created_at' })
+  @CreateDateColumn({ name: 'created_at', type: 'timestamptz' })
   createdAt: Date;
 
-  @UpdateDateColumn({ name: 'updated_at' })
+  @UpdateDateColumn({ name: 'updated_at', type: 'timestamptz' })
   updatedAt: Date;
 
-  @DeleteDateColumn({ nullable: true, name: 'deleted_at' })
+  @DeleteDateColumn({ nullable: true, type: 'timestamptz', name: 'deleted_at' })
   deletedAt: Date | null;
 }
