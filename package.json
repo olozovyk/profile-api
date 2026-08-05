@@ -87,9 +87,7 @@
     "unrs-resolver@1.12.2": true
   },
   "lint-staged": {
-    "*.ts": [
-      "eslint",
-      "prettier --check"
-    ]
+    "*.ts": "eslint --fix",
+    "*.{json,md,yml}": "prettier --write --ignore-unknown"
   }
 }
