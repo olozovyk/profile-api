@@ -15,8 +15,8 @@ import { UserModule } from './user/user.module';
       imports: [AppConfigModule],
       useFactory: (config: AppConfigService) => ({
         type: 'postgres',
-        host: 'localhost',
-        port: 5432,
+        host: config.db.host,
+        port: config.db.port,
         username: config.db.user,
         password: config.db.password,
         database: config.db.name,
