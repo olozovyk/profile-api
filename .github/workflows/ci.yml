@@ -40,6 +40,8 @@ jobs:
         run: npm ci
       - name: Run linter
         run: npm run lint
+      - name: Run migrations
+        run: npm run migration:run
       - name: Run tests
         run: npm run test
       - name: Run e2e tests
