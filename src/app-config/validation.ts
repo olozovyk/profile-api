@@ -8,6 +8,9 @@ const envVars = z.object({
   DB_USER: z.string(),
   DB_PASSWORD: z.string(),
   DB_NAME: z.string(),
+  AWS_ACCESS_KEY: z.string(),
+  AWS_SECRET_KEY: z.string(),
+  AWS_REGION: z.string(),
 });
 
 export type EnvVars = z.infer<typeof envVars>;

@@ -23,4 +23,12 @@ export class AppConfigService {
       name: this.configService.get('DB_NAME', { infer: true }),
     };
   }
+
+  get aws() {
+    return {
+      key: this.configService.get('AWS_ACCESS_KEY', { infer: true }),
+      secret: this.configService.get('AWS_SECRET_KEY', { infer: true }),
+      region: this.configService.get('AWS_REGION', { infer: true }),
+    };
+  }
 }

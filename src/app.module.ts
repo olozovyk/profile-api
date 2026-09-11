@@ -7,6 +7,7 @@ import { AppConfigService } from './app-config/app-config.service';
 import { AppController } from './app.controller';
 import { AuthModule } from './auth/auth.module';
 import { entities } from './database/data-source';
+import { MailModule } from './mail/mail.module';
 import { UserModule } from './user/user.module';
 
 @Module({
@@ -27,6 +28,7 @@ import { UserModule } from './user/user.module';
     }),
     UserModule,
     AuthModule,
+    MailModule,
   ],
   controllers: [AppController],
   providers: [

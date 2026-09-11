@@ -1,31 +1,58 @@
 {
   "name": "profile-api",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
   "private": true,
+  "description": "",
   "license": "UNLICENSED",
+  "author": "",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest start",
-    "start:dev": "NODE_ENV=development nest start --watch",
-    "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "migration:generate": "ts-node scripts/db/generate-migration.ts",
+    "migration:revert": "npm run typeorm -- migration:revert",
+    "migration:run": "npm run typeorm -- migration:run",
+    "migration:status": "npm run typeorm -- migration:show",
+    "prepare": "husky",
+    "start": "nest start",
+    "start:debug": "nest start --debug --watch",
+    "start:dev": "NODE_ENV=development nest start --watch",
+    "start:prod": "node dist/main",
     "test": "jest",
-    "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "prepare": "husky",
-    "typeorm": "typeorm-ts-node-commonjs -d src/database/data-source.ts",
-    "migration:generate": "ts-node scripts/db/generate-migration.ts",
-    "migration:run": "npm run typeorm -- migration:run",
-    "migration:revert": "npm run typeorm -- migration:revert",
-    "migration:status": "npm run typeorm -- migration:show"
+    "test:watch": "jest --watch",
+    "typeorm": "typeorm-ts-node-commonjs -d src/database/data-source.ts"
+  },
+  "lint-staged": {
+    "*.ts": "eslint --fix",
+    "*.{json,md,yml}": "prettier --write --ignore-unknown"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testEnvironment": "node",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    }
+  },
+  "overrides": {
+    "@nestjs/swagger": {
+      "js-yaml": "5.2.3"
+    }
   },
   "dependencies": {
+    "@aws-sdk/client-sesv2": "^3.1116.0",
     "@nestjs/common": "^11.0.1",
     "@nestjs/config": "^4.0.4",
     "@nestjs/core": "^11.0.1",
@@ -61,6 +88,7 @@
     "jest": "^30.0.0",
     "lint-staged": "^17.3.0",
     "prettier": "^3.4.2",
+    "prettier-plugin-packagejson": "^3.0.2",
     "source-map-support": "^0.5.21",
     "supertest": "^7.0.0",
     "ts-jest": "^29.2.5",
@@ -70,35 +98,9 @@
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.20.0"
   },
-  "overrides": {
-    "@nestjs/swagger": {
-      "js-yaml": "5.2.3"
-    }
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "ts"
-    ],
-    "rootDir": "src",
-    "testRegex": ".*\\.spec\\.ts$",
-    "transform": {
-      "^.+\\.(t|j)s$": "ts-jest"
-    },
-    "collectCoverageFrom": [
-      "**/*.(t|j)s"
-    ],
-    "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
-  },
   "allowScripts": {
     "unrs-resolver@1.12.2": true,
     "argon2@0.45.1": true,
     "@scarf/scarf@1.4.0": true
-  },
-  "lint-staged": {
-    "*.ts": "eslint --fix",
-    "*.{json,md,yml}": "prettier --write --ignore-unknown"
   }
 }
