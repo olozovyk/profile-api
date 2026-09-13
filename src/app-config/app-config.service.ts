@@ -11,6 +11,7 @@ export class AppConfigService {
     return {
       port: this.configService.get('PORT', { infer: true }),
       tz: this.configService.get('TZ', { infer: true }),
+      baseUrl: this.configService.get('BASE_URL', { infer: true }),
     };
   }
 
@@ -29,6 +30,15 @@ export class AppConfigService {
       key: this.configService.get('AWS_ACCESS_KEY', { infer: true }),
       secret: this.configService.get('AWS_SECRET_KEY', { infer: true }),
       region: this.configService.get('AWS_REGION', { infer: true }),
+    };
+  }
+
+  get email() {
+    return {
+      verificationFrom: this.configService.get(
+        'EMAIL_VERIFICATION_FROM_EMAIL',
+        { infer: true },
+      ),
     };
   }
 }

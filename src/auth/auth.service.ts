@@ -29,6 +29,14 @@ export class AuthService {
     const emailVerificationExpires =
       this.emailVerificationService.getTokenExpiresDate();
 
+    void this.emailVerificationService
+      .sendVerificationEmail({
+        to: userData.email,
+        token: emailVerificationToken,
+        expiresDate: emailVerificationExpires,
+      })
+      .catch(e => console.error(e));
+
     const user = await this.userService.create({
       ...userData,
       passwordHash,
