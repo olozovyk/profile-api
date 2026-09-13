@@ -47,7 +47,12 @@ export class User {
   emailVerified: boolean;
 
   @Exclude()
-  @Column({ nullable: true, type: 'varchar', name: 'email_verification_token' })
+  @Column({
+    nullable: true,
+    type: 'varchar',
+    name: 'email_verification_token',
+    unique: true,
+  })
   emailVerificationToken: string | null;
 
   @Exclude()
